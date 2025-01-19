@@ -1,6 +1,6 @@
 # webXscan
-Tool to make the life of web pentesters a little easier.
-WebXScan
+Tool to make the life of web-pentesters a little easier.
+
 
 WebXScan is a Python-based web reconnaissance tool designed to assist security professionals and enthusiasts in gathering information about a target website. The tool provides various modules to extract valuable insights, including comments, links, images, HTTP headers, and more.
 
