@@ -89,7 +89,7 @@ def dns_lookup(target_url, output_file):
 def main():
     display_banner()
     target_url = get_target_url()
-    output_file = f"webXscan_{clean_url(target_url)}_{datetime.now().strftime('%Y%m%d_%H%M%S')}_output.txt"
+    output_file = f"SiteMole_{clean_url(target_url)}_{datetime.now().strftime('%Y%m%d_%H%M%S')}_output.txt"
     print("Results saved to:", output_file)
 
     print("\nChoose a module to run:")
@@ -116,7 +116,7 @@ def main():
     elif choice == '6':
         dns_lookup(target_url, output_file)
     elif choice == '7':
-        print("Exiting WebXScan. Goodbye!")
+        print("Exiting SiteMole. Goodbye!")
         exit(0)
     else:
         print("Invalid choice. Please run the script again and select a valid option.")
