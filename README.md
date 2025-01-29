@@ -1,8 +1,8 @@
-# webXscan
+# SiteMole
 Tool to make the life of web-pentesters a little easier.
 
 
-WebXScan is a Python-based web reconnaissance tool designed to assist security professionals and enthusiasts in gathering information about a target website. The tool provides various modules to extract valuable insights, including comments, links, images, HTTP headers, and more.
+SiteMole is a Python-based web reconnaissance tool designed to assist security professionals and enthusiasts in gathering information about a target website. The tool provides various modules to extract valuable insights, including comments, links, images, HTTP headers, and more.
 
 ## Features
 
@@ -29,12 +29,12 @@ pip install requests
 
 Clone the repository:
 ```
-git clone https://github.com/yourusername/webxscan.git
-cd webxscan
+git clone https://github.com/vxChiZu/SiteMole.git
+cd SiteMole
 ```
 Run the script:
 ```
-python webxscan.py
+python SiteMole.py
 ```
 Enter the target URL when prompted.
 
@@ -43,7 +43,7 @@ Select a module from the menu to run the desired scan.
 Example Output
 ```
 Enter the target URL (e.g., https://example.com): https://example.com
-Results saved to: webXscan_https___example_com_20240119_153000_output.txt
+Results saved to: SiteMole_https_example_com_20240119_153000_output.txt
 
 Choose a module to run:
 1) Comment Extractor
@@ -60,5 +60,5 @@ Contributions are welcome! Feel free to open an issue or submit a pull request w
 
 ## Disclaimer
 
-**Use this tool for ethical and lawful purposes only. The author takes no responsibility for any misuse or illegal activities carried out using WebXScan.**
+**Use this tool for ethical and lawful purposes only. The author takes no responsibility for any misuse or illegal activities carried out using SiteMole.**
 
