@@ -18,6 +18,8 @@ SiteMole is a Python-based web reconnaissance tool designed to assist security p
 
 - **DNS Lookup:** Resolves the target domain to its IP address.
 
+- **And more are in the pipeline**
+
 ## Installation
 
 Ensure you have Python 3 installed along with the required dependencies:
@@ -32,33 +34,85 @@ Clone the repository:
 git clone https://github.com/vxChiZu/SiteMole.git
 cd SiteMole
 ```
-Run the script:
-```
-python SiteMole.py
-```
-Enter the target URL when prompted.
+Install Dependencies
 
-Select a module from the menu to run the desired scan.
-
-Example Output
+Ensure you have Python 3 installed. Install the required dependencies using:
 ```
-Enter the target URL (e.g., https://example.com): https://example.com
-Results saved to: SiteMole_https_example_com_20240119_153000_output.txt
-
-Choose a module to run:
-1) Comment Extractor
-2) SRI Checker
-3) Link Extractor
-4) Image Scraper
-5) HTTP Header Analyzer
-6) DNS Lookup
-7) Exit
+pip install -r requirements.txt
 ```
+Usage
+
+Run the script with a target URL and specify a module to execute:
+```
+python sitemole.py -t https://example.com -m [module]
+```
+Available Modules
+
+Module
+
+Description
+
+comments
+
+Extracts HTML comments
+
+sri
+
+Checks for Subresource Integrity (SRI) usage
+
+links
+
+Extracts links from the page
+
+images
+
+Scrapes image URLs from the page
+
+headers
+
+Analyzes HTTP security headers
+
+all
+
+Runs all modules and saves results to results.txt
+
+## Interactive Mode
+
+If no module is specified, an interactive menu allows you to choose a module to run.
+```
+python sitemole.py -t https://example.com
+# or
+python sitemole.py
+```
+
+## Example Usage
+
+Run the comment extractor:
+```
+python sitemole.py -t https://example.com -m comments
+```
+Run all modules and save results:
+```
+python sitemole.py -t https://example.com -m all
+```
+Requirements
+
+Ensure you have the following installed:
+```
+argparse
+requests
+termcolor
+```
+These will be automatically installed using pip install -r requirements.txt.
+
+## License
+
+This project is licensed under the MIT License.
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request with your improvements.
 
-## Disclaimer
+# Disclaimer
 
 **Use this tool for ethical and lawful purposes only. The author takes no responsibility for any misuse or illegal activities carried out using SiteMole.**
 
