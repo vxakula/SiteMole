@@ -22,14 +22,7 @@ SiteMole is a Python-based web reconnaissance tool designed to assist security p
 
 ## Installation
 
-Ensure you have Python 3 installed along with the required dependencies:
-```
-pip install requests
-```
-
-## Usage
-
-Clone the repository:
+### Clone the repository:
 ```
 git clone https://github.com/vxChiZu/SiteMole.git
 cd SiteMole
@@ -40,41 +33,23 @@ Ensure you have Python 3 installed. Install the required dependencies using:
 ```
 pip install -r requirements.txt
 ```
-Usage
+
+## Usage
 
 Run the script with a target URL and specify a module to execute:
 ```
 python sitemole.py -t https://example.com -m [module]
 ```
-Available Modules
+## Available Modules
 
-Module
-
-Description
-
-comments
-
-Extracts HTML comments
-
-sri
-
-Checks for Subresource Integrity (SRI) usage
-
-links
-
-Extracts links from the page
-
-images
-
-Scrapes image URLs from the page
-
-headers
-
-Analyzes HTTP security headers
-
-all
-
-Runs all modules and saves results to results.txt
+| **_Module_** |                 **_Description_**                 |
+|:------------:|:-------------------------------------------------:|
+| comments     | Extracts HTML comments                            |
+| sri          | Checks for Subresource Integrity (SRI) usage      |
+| links        | Extracts links from the page                      |
+| images       | Scrapes image URLs from the page                  |
+| headers      | Analyzes HTTP security headers                    |
+| all          | Runs all modules and saves results to results.txt |
 
 ## Interactive Mode
 
