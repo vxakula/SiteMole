@@ -34,7 +34,7 @@ Clone the repository:
 git clone https://github.com/vxChiZu/SiteMole.git
 cd SiteMole
 ```
-Install Dependencies
+### Install Dependencies
 
 Ensure you have Python 3 installed. Install the required dependencies using:
 ```
