@@ -99,36 +99,71 @@ def extract_images(target_url):
 
 def analyze_headers(target_url):
     print("\n[+] Running HTTP Header Analysis on", target_url)
-    response = requests.head(target_url)
-    headers = response.headers
 
-    # Headers categorized
-    critical_headers = ["Strict-Transport-Security", "X-Frame-Options", "X-Content-Type-Options", 
-                         "Content-Security-Policy", "Referrer-Policy", "Permissions-Policy"]
+    try:
+        curl_command = [
+            "curl", "-s", "-D", "-", "-o", "/dev/null",
+            "-A", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+            "-L", target_url
+        ]
+        result = subprocess.run(curl_command, capture_output=True, text=True)
+        raw_headers = result.stdout
 
-    warning_headers = ["Feature-Policy", "X-Permitted-Cross-Domain-Policies", 
-                       "Cross-Origin-Embedder-Policy", "Cross-Origin-Resource-Policy", 
-                       "Cross-Origin-Opener-Policy", "Expect-CT"]
+        print(colored("DEBUG: Raw headers from curl:\n", "cyan") + raw_headers)
+
+        if not raw_headers:
+            raise Exception("No headers received.")
+    except Exception as e:
+        print(colored(f"❌ Failed to fetch headers: {e}", "red"))
+        return f"Failed to fetch headers: {e}"
+
+    # Parse headers case-insensitive
+    headers = {}
+    for line in raw_headers.splitlines():
+        if ": " in line:
+            key, value = line.split(": ", 1)
+            headers[key.strip().lower()] = value.strip()
 
     output = []
 
-    for header in critical_headers:
+    critical_headers = {
+        "strict-transport-security": None,
+        "x-frame-options": "🔶 Superseded by CSP frame-ancestors",
+        "x-content-type-options": None,
+        "content-security-policy": None,
+        "referrer-policy": None,
+        "permissions-policy": None,
+        "cache-control": None,
+        "x-permitted-cross-domain-policies": None,
+        "cross-origin-embedder-policy": None,
+        "cross-origin-opener-policy": None,
+        "cross-origin-resource-policy": None,
+        "feature-policy": "🔶 Superseded by Permissions-Policy"
+    }
+
+    for header, note in critical_headers.items():
         if header in headers:
-            output.append(f"{header}: {headers[header]}")
+            line = f"{header}: {headers[header]}"
+            if note:
+                output.append(colored(f"{line}  [{note}]", "yellow"))
+            else:
+                output.append(colored(line, "green"))
         else:
-            output.append(colored(f"❌ {header} is missing!", "red"))
+            color = "yellow" if note else "red"
+            icon = "⚠️" if note else "❌"
+            output.append(colored(f"{icon} {header} is missing!", color))
 
-    for header in warning_headers:
-        if header in headers:
-            output.append(f"{header}: {headers[header]}")
-        else:
-            output.append(colored(f"⚠️ {header} is missing!", "yellow"))
+    # Deprecated Header Check
+    if "x-xss-protection" in headers:
+        output.append(colored("❌ X-XSS-Protection found! (Deprecated, remove it!)", "red"))
 
-    # Special case: X-XSS-Protection should be marked in red if present
-    if "X-XSS-Protection" in headers:
-        output.append(colored(f"❌ X-XSS-Protection found! (Deprecated, remove it!)", "red"))
+    # frame-ancestors Check (case-insensitive)
+    csp = headers.get("content-security-policy", "")
+    if "frame-ancestors" in csp:
+        output.append(colored("✅ CSP includes frame-ancestors directive", "green"))
+    else:
+        output.append(colored("⚠️ CSP is missing frame-ancestors directive", "yellow"))
 
-    # Print results
     print("\n".join(output))
     return "\n".join(output)
     
