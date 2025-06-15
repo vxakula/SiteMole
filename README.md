@@ -1,4 +1,7 @@
-# SiteMole
+# SiteMole 🕷️ — Web Recon Tool by G0ldSec
+
+SiteMole is a Python-based reconnaissance tool for analyzing web targets via headers, SRI, links, images and comments.
+
 Tool to make the life of web-pentesters a little easier.
 
 
