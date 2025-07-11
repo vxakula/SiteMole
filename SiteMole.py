@@ -13,9 +13,9 @@ def display_banner():
 \___ \| | __/ _ \ |\/| |/ _ \| |/ _ \
  ___) | | ||  __/ |  | | (_) | |  __/
 |____/|_|\__\___|_|  |_|\___/|_|\___|
-                                    by G0ldSec
+                                    by Gl4d
                                     
-https://github.com/G0ldSec
+https://github.com/vxgl4d
     """
     print(banner)
 
