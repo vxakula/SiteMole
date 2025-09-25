@@ -213,13 +213,13 @@ def main():
         elif args.module == "images": extract_images(target_url)
         elif args.module == "headers": analyze_headers(target_url)
         elif args.module == "all": run_all_modules(target_url)
-        print("\n👋 Exiting SiteMole. Goodbye!\n")
+        print("\n Exiting SiteMole. Goodbye!\n")
         exit(0)
     else:
         while True:
             args.module = select_module()
             if args.module == "exit":
-                print("👋 Exiting SiteMole. Goodbye!")
+                print("Exiting SiteMole. Goodbye!")
                 break
             target_url = args.target
             if args.module == "comments": extract_comments(target_url)
@@ -233,4 +233,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
