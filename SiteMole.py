@@ -13,9 +13,9 @@ def display_banner():
 \___ \| | __/ _ \ |\/| |/ _ \| |/ _ \
  ___) | | ||  __/ |  | | (_) | |  __/
 |____/|_|\__\___|_|  |_|\___/|_|\___|
-                                    by Gl4d
+                                    by Akula
                                     
-https://github.com/vxgl4d
+https://github.com/vxakula
     """
     print(banner)
 
@@ -233,3 +233,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
